@@ -1,0 +1,11 @@
+.recipe-random{
+    text-align:center;
+    display:block;
+    justify-content: center;
+}
+.random-recipe-section{
+    height: 500px;
+    width: 400px;
+    background-color: blue;
+    margin: 25px;
+}
