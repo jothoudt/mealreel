@@ -1,4 +1,4 @@
-const saveReducer = (state = '', action) => {
+const saveReducer = (state = [], action) => {
     switch (action.type) {
       case 'SET_SAVE':
         return action.payload;

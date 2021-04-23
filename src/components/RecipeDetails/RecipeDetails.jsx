@@ -9,12 +9,6 @@ function RecipeDetails(){
 const id =useParams();
 const dispatch=useDispatch();
 
-
-//function to call dispatch recipe details from Tasty API
-const displayDetails=()=>{
-    dispatch ({type: 'FETCH_DETAILS', payload: id});
-}
-
 //to fetch details on load
 useEffect(()=>{
     dispatch ({type: 'FETCH_DETAILS', payload: id});

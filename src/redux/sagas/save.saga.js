@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function* saveSaga(){
     yield takeEvery('ADD_SAVE', addSave)
+    yield takeEvery('FETCH_SAVE', getSave)
 }
 
 function* addSave(action){
@@ -15,4 +16,14 @@ function* addSave(action){
     }
 }
 
+function* getSave(action){
+    console.log(action.payload)
+    try{
+        const response=yield axios.get('api/save/' + action.payload)
+        yield put({type: 'SET_SAVE', payload:response.data})
+    }
+    catch(error){
+        console.log('get saved error', error)
+    }
+}
 export default saveSaga;

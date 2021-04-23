@@ -10,6 +10,12 @@ const {
 
 require('dotenv').config();
 
+saveRouter.get('/:id', (req,res)=>{
+    console.log(req.params);
+    const getQuery=`SELECT * FROM "saved" WHERE "user_id"=$1;`;
+    pool.query(getQuery, [req.params.id]).then(result =>{res.send(result.rows);}).catch(err=>{res.sendStatus(500)})
+})
+
 saveRouter.post('/', (req, res)=>{
     console.log(req.body)
     const saveQuery= `INSERT INTO "saved" ("recipe_id", "recipe_img", "recipe_name", "user_id") VALUES ($1, $2, $3, $4)`
