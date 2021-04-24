@@ -12,7 +12,7 @@ searchRouter.get('/', (req, res) =>{
         url: 'https://tasty.p.rapidapi.com/recipes/list',
         params: {from: '0', size: '2', tags: 'dinner', q:param},
         headers: {
-          'x-rapidapi-key': RapidAPI,
+          'x-rapidapi-key': 'RapidAPI',
           'x-rapidapi-host': 'tasty.p.rapidapi.com'
         }
       };

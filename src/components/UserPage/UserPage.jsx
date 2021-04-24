@@ -8,11 +8,17 @@ function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const saved = useSelector((store)=> store.save);
+  const favorite =useSelector((store)=> store.favorite);
 
   const dispatch=useDispatch()
 
+  const onLoad=()=>{
+    dispatch({type:'FETCH_SAVE', payload: user.id});
+    dispatch({type:'FETCH_FAVORITE', payload:user.id});
+  }
+
   useEffect(()=>
-    dispatch({type:`FETCH_SAVE`, payload: user.id})
+    onLoad()
   ,[]);
 
   const getSavedRecipes=()=>{
@@ -22,10 +28,13 @@ function UserPage() {
     }
     else{
       savedDisplay= saved.map((recipe, index)=>{
+        let saveLink = '/recipedetails/' + recipe.recipe_id;
         return(
           <div className="recipe-card" key={index}>
             <h4>{recipe.recipe_name}</h4>
+            <Link to={saveLink}>
             <img src={recipe.recipe_img} height="150" width="150"></img>
+            </Link>
             <div>
               <button>Remove</button>
             </div>
@@ -34,6 +43,31 @@ function UserPage() {
       })
     }
     return savedDisplay;
+  }
+
+  const getFavoriteRecipes=()=>{
+    let favoriteDisplay=''
+    if(!favorite){
+      favoriteDisplay= <> </>;
+    }
+    else{
+      
+      favoriteDisplay= favorite.map((recipe, index)=>{
+        let favoriteLink = '/recipedetails/' + recipe.recipe_id;
+        return(
+          <div className="recipe-card" key={index}>
+            <h4>{recipe.recipe_name}</h4>
+            <Link to={favoriteLink}>
+              <img src={recipe.recipe_img} height="150" width="150"></img>
+            </Link>
+            <div>
+              <button>Remove</button>
+            </div>
+          </div>
+        )
+      })
+    }
+    return favoriteDisplay;
   }
 
   return (
@@ -45,6 +79,7 @@ function UserPage() {
       </div>
       <div className="favorite-recipes">
         <h2>Your favorite recipes</h2>
+        {getFavoriteRecipes()}
       </div>
       <div className="to-try">
         <h2>Recipes you have saved that you would like to try:</h2>

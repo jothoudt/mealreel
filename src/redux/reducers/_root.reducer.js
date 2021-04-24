@@ -4,6 +4,7 @@ import user from './user.reducer';
 import search from './search.reducer';
 import details from './details.reducer';
 import save from './save.reducer';
+import favorite from './favorite.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   search,//returns results from recipe search from 3rd party api
   details,// returns the details of a single recipe from 3rd party api
-  save,
+  save,//recipes that the user has saved
+  favorite,//recipes that the user has favorited
 });
 
 export default rootReducer;

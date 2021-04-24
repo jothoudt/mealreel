@@ -47,6 +47,7 @@ const getDetail=()=>{
                 recipe_name: detail.name
               }
               console.log(favoriteRecipe); 
+              dispatch({type: 'ADD_FAVORITE', payload:favoriteRecipe})
         }
         const getVideo=()=>{
             let videoDisplay=''
