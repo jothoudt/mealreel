@@ -27,8 +27,17 @@ function UserPage() {
       savedDisplay= <> </>;
     }
     else{
+      
       savedDisplay= saved.map((recipe, index)=>{
         let saveLink = '/recipedetails/' + recipe.recipe_id;
+        const deleteSave=()=>{
+          let params={
+            id: user.id,
+            recipe_id:recipe.recipe_id
+          }
+          dispatch({type:'DELETE_SAVE', payload: params});
+          dispatch({type:'FETCH_SAVE', payload: user.id})
+        }
         return(
           <div className="recipe-card" key={index}>
             <h4>{recipe.recipe_name}</h4>
@@ -36,7 +45,7 @@ function UserPage() {
             <img src={recipe.recipe_img} height="150" width="150"></img>
             </Link>
             <div>
-              <button>Remove</button>
+              <button onClick={deleteSave}>Remove</button>
             </div>
           </div>
         )

@@ -13,7 +13,7 @@ const option = {
   url: 'https://tasty.p.rapidapi.com/recipes/detail',
   params: {id: recipeId.id},
   headers: {
-    'x-rapidapi-key': RapidAPI ,
+    'x-rapidapi-key': 'RapidAPI ,
     'x-rapidapi-host': 'tasty.p.rapidapi.com'
   }
 };

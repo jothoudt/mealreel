@@ -26,4 +26,14 @@ saveRouter.post('/', (req, res)=>{
     })
 })
 
+saveRouter.delete('/:id', (req, res)=>{
+    console.log(req.body);
+    const deleteQuery=`DELETE FROM "saved" WHERE "user_id"= $1 AND "recipe_id"= $2`
+    pool.query(deleteQuery, [req.params.id, req.body.recipe_id]).then(()=>res.sendStatus(200))
+        .catch((err)=>{
+            console.log('delete error', err)
+            res.sendStatus(500);
+        })
+})
+
 module.exports= saveRouter;
