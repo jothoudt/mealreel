@@ -18,47 +18,54 @@ useEffect(()=>{
 const detail=useSelector(store=>store.details);
 const user=useSelector(store=>store.user);
 
+//conditionally render recipe details to avoid timing errors
 const getDetail=()=>{
     
     let display=''
+    //if reducer isn't set a loading message will display
     if(!detail){
         display=
         <>
         <h3>loading</h3>
         </>
-    }
+    }//end if 
+    //otherwise display recipe properties
     else{
+        //function to save a recipe
         const saveRecipe=()=>{
+            //recipe to save
             let savedRecipe={
               user_id: user.id,
               recipe_id: detail.id,
               img_url: detail.thumbnail_url,
               recipe_name: detail.name
-            }
+            }//end saveRecipe object
             console.log(savedRecipe);
+            //dispatch to save the recipe
             dispatch({type: 'ADD_SAVE', payload:savedRecipe})
-        }
-
+        }//end save Recipe
+        //function to favorite a recipe
         const favoriteRecipe=()=>{
             let favoriteRecipe={
                 user_id: user.id,
                 recipe_id: detail.id,
                 img_url: detail.thumbnail_url,
                 recipe_name: detail.name
-              }
+              }//end favoriteRecipe object
               console.log(favoriteRecipe); 
               dispatch({type: 'ADD_FAVORITE', payload:favoriteRecipe})
-        }
+        }//end favoriteRecipe
+        //function to display video if available or not
         const getVideo=()=>{
             let videoDisplay=''
             if(detail.renditions[0].url){
                 videoDisplay=<iframe src={detail.renditions[0].url} height="720" width="720"></iframe>
-            }
+            }//end if
             else{
                 videoDisplay= <></>
-            }
+            }//end else
             return videoDisplay
-         }
+         }//end getVideo
         
         let ingredients= detail.sections[0].components;
          display=
@@ -112,24 +119,13 @@ const getDetail=()=>{
     }
     return display;
 }
-//  const getVideo=()=>{
-//     let videoDisplay=''
-//     if(!detail.renditions[0].url){
-//         videoDisplay= <> </>
-//     }
-//     else{
-//         videoDisplay= <iframe src={detail.renditions[0].url} height="720" width="720"></iframe>
-//     }
-//     return videoDisplay
-//  }
-
 
     return(
         <>
         {getDetail()}
         {/* {getVideo()} */}
         </>
-    )
-}
+    )//end return
+}//end RecipeDetails
 
 export default RecipeDetails;

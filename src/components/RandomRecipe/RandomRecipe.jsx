@@ -5,10 +5,12 @@ import './RandomRecipe.css';
 
 function RandomRecipe(){
 
+//define useDispatch and useSelector
 const dispatch=useDispatch();
 const random=useSelector((store)=>store.random);
 let randomIndex=''
 
+//function to create new random
 const nextRecipe=()=>{
     randomIndex= Math.floor((Math.random() * 25) + 1);
     console.log('try different recipe', randomIndex)

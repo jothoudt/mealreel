@@ -1,12 +1,13 @@
+import React from 'react'
 import {Link,useHistory} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 
+//returns each item from the search
 function EachRecipe(props){
 
-  const dispatch=useDispatch();
-  const history=useHistory();
+  //define link
+  let recipedetails= '/recipedetails/' + props.recipe.id;
 
-      let recipedetails= '/recipedetails/' + props.recipe.id;
     return(
         <>
         <div key={props.id}>
@@ -18,7 +19,7 @@ function EachRecipe(props){
           </div>
         </div>
         </>
-    )
-}
+    )//end return
+}//end EachRecipe
 
 export default EachRecipe;
