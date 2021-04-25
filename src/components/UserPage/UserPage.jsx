@@ -63,6 +63,14 @@ function UserPage() {
       
       favoriteDisplay= favorite.map((recipe, index)=>{
         let favoriteLink = '/recipedetails/' + recipe.recipe_id;
+        const deleteFavorite=()=>{
+          let params={
+            id: user.id,
+            recipe_id:recipe.recipe_id
+          }
+          dispatch({type:'DELETE_FAVORITE', payload: params});
+          dispatch({type:'FETCH_FAVORITE', payload: user.id})
+        }
         return(
           <div className="recipe-card" key={index}>
             <h4>{recipe.recipe_name}</h4>
@@ -70,7 +78,7 @@ function UserPage() {
               <img src={recipe.recipe_img} height="150" width="150"></img>
             </Link>
             <div>
-              <button>Remove</button>
+              <button onClick={deleteFavorite}>Remove</button>
             </div>
           </div>
         )

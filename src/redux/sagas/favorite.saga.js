@@ -4,6 +4,7 @@ import axios from 'axios';
 function* favoriteSaga(){
     yield takeEvery('ADD_FAVORITE', addFavorite)
     yield takeEvery('FETCH_FAVORITE', getFavorite)
+    yield takeEvery('DELETE_FAVORITE', deleteFavorite)
 }
 
 function* addFavorite(action){
@@ -24,6 +25,16 @@ function* getFavorite(action){
     }
     catch(error){
         console.log('get favorites error', error)
+    }
+}
+
+function* deleteFavorite(action){
+    console.log(action.payload)
+    try{
+        const response=yield axios.delete('/api/favorite/' + action.payload.id, {data: action.payload})
+    }
+    catch(error){
+        console.log('delete favorite error', error);
     }
 }
 export default favoriteSaga;
