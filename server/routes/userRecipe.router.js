@@ -8,6 +8,14 @@ const {
   const pool = require('../modules/pool');
   const userStrategy = require('../strategies/user.strategy');
 
+  userRecipeRouter.get('/', (req, res)=>{
+    const fetchAllQuery=`SELECT * FROM "user_recipes";`;
+    pool.query(fetchAllQuery).then(result=>{res.send(result.rows)})
+      .catch((err)=>{
+        console.log(err)
+        res.sendStatus(500)});
+  })
+
   userRecipeRouter.post('/', (req, res)=>{
     console.log(req.body)
     const addRecipeQuery= `INSERT INTO "user_recipes" ("name", "img_url", "credit", "cook_time", "servings", "ingredients", "instructions", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
