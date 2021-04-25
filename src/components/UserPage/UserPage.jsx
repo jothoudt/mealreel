@@ -114,6 +114,11 @@ function UserPage() {
             <button> Random Recipe</button>
           </Link>
         </div>
+        <div className="user-recipes">
+          <Link to="/userrecipes">
+            <button>User Recipes</button>
+          </Link>
+        </div>
         </div>
       <div>
         <LogOutButton className="btn" />

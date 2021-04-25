@@ -2,13 +2,13 @@ import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* userRecipeSaga(){
-    yield takeEvery('ADD_NEW_RECIPE', addRecipe)
+    yield takeEvery('ADD_USER_RECIPE', addRecipe)
 }
 
 function* addRecipe(action){
     try{
-        console.log('in fetch search')
-        const response=yield axios.post('/api/userrecipes', action.payload)
+        console.log('in add user recipe')
+        const response=yield axios.post('/api/userrecipes/', action.payload)
         }
     catch(error){ console.log('get results error', error);
     }

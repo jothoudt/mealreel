@@ -23,6 +23,8 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import RandomRecipe from '../RandomRecipe/RandomRecipe';
 import RecipeDetails from '../RecipeDetails/RecipeDetails';
 import SearchRecipe from '../SearchRecipe/SearchRecipe';
+import UserRecipes from '../UserRecipes/UserRecipes';
+import UserAddRecipe from '../UserAddRecipe/UserAddRecipe';
 
 
 import './App.css';
@@ -118,6 +120,14 @@ function App() {
 
             <ProtectedRoute exact path="/recipedetails/:id">
               <RecipeDetails />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/userrecipes">
+              <UserRecipes />
+            </ProtectedRoute>
+
+            <ProtectedRoute exact path="/useraddrecipe">
+              <UserAddRecipe />
             </ProtectedRoute>
 
             {/* If none of the other routes matched, we will show a 404. */}

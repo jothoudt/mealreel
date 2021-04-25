@@ -14,6 +14,7 @@ const detailsRouter =require('./routes/details.router');
 const saveRouter = require('./routes/save.router');
 const favoriteRouter= require('./routes/favorite.router');
 const randomRouter=require('./routes/random.router');
+const userRecipeRouter=require('./routes/userRecipe.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +34,7 @@ app.use('/api/details', detailsRouter);
 app.use('/api/save', saveRouter);
 app.use('/api/favorite', favoriteRouter);
 app.use('/api/random', randomRouter);
+app.use('/api/userrecipes/', userRecipeRouter);
 
 // Serve static files
 app.use(express.static('build'));
