@@ -6,6 +6,7 @@ import searchSaga from './search.saga';
 import detailsSaga from './details.saga';
 import saveSaga from './save.saga';
 import favoriteSaga from './favorite.saga';
+import randomSaga from './random.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -23,5 +24,6 @@ export default function* rootSaga() {
     detailsSaga(),
     saveSaga(),
     favoriteSaga(),
+    randomSaga(),
   ]);
 }

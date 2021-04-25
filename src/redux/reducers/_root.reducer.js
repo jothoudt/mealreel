@@ -5,6 +5,7 @@ import search from './search.reducer';
 import details from './details.reducer';
 import save from './save.reducer';
 import favorite from './favorite.reducer';
+import random from './random.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   details,// returns the details of a single recipe from 3rd party api
   save,//recipes that the user has saved
   favorite,//recipes that the user has favorited
+  random,//recipes for random page
 });
 
 export default rootReducer;

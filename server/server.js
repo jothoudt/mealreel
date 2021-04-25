@@ -13,6 +13,7 @@ const searchRouter =require('./routes/search.router');
 const detailsRouter =require('./routes/details.router');
 const saveRouter = require('./routes/save.router');
 const favoriteRouter= require('./routes/favorite.router');
+const randomRouter=require('./routes/random.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -31,6 +32,7 @@ app.use('/api/search', searchRouter);
 app.use('/api/details', detailsRouter);
 app.use('/api/save', saveRouter);
 app.use('/api/favorite', favoriteRouter);
+app.use('/api/random', randomRouter);
 
 // Serve static files
 app.use(express.static('build'));

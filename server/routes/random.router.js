@@ -4,27 +4,26 @@ const detailsRouter = express.Router();
 
 require('dotenv').config();
 
-detailsRouter.get('/:id', (req, res)=>{
+detailsRouter.get('/', (req, res)=>{
   let recipeId=req.params
   console.log(recipeId);
 
-const option = {
-  method: 'GET',
-  url: 'https://tasty.p.rapidapi.com/recipes/detail',
-  params: {id: recipeId.id},
-  headers: {
-    'x-rapidapi-key': RapidAPI,
-    'x-rapidapi-host': 'tasty.p.rapidapi.com'
-  }
-};
+  const options = {
+    method: 'GET',
+    url: 'https://tasty.p.rapidapi.com/recipes/list',
+    params: {from: '2', size: '25', tags: 'dinner'},
+    headers: {
+      'x-rapidapi-key': RapidAPI,
+      'x-rapidapi-host': 'tasty.p.rapidapi.com'
+    }
+  };
+  axios.request(options).then(function (response) {
+    console.log(response.data);
+    res.send(response.data.results);
+  }).catch((err)=>{
+    res.sendStatus(500)
+  
 
-axios.request(option).then(function (response) {
-	console.log(response.data);
-  res.send(response.data);
-}).catch(function (error) {
-	console.error(error);
-  res.sendStatus(500);
-});
 })
-
+})
 module.exports= detailsRouter;
