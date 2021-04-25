@@ -7,6 +7,7 @@ import detailsSaga from './details.saga';
 import saveSaga from './save.saga';
 import favoriteSaga from './favorite.saga';
 import randomSaga from './random.saga';
+import userRecipeSaga from './userRecipe.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -20,10 +21,11 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    searchSaga(),
-    detailsSaga(),
-    saveSaga(),
-    favoriteSaga(),
-    randomSaga(),
+    searchSaga(),//search results
+    detailsSaga(),//recipe details
+    saveSaga(),//recipes saved by user
+    favoriteSaga(),//recipes favorited by user
+    randomSaga(),//returns recipes to select random
+    userRecipeSaga(),//for user recipes
   ]);
 }
