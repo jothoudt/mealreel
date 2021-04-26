@@ -11,7 +11,7 @@ detailsRouter.get('/', (req, res)=>{
   const options = {
     method: 'GET',
     url: 'https://tasty.p.rapidapi.com/recipes/list',
-    params: {from: '2', size: '25', tags: 'dinner'},
+    params: {from: '2', size: '40', tags: 'dinner'},
     headers: {
       'x-rapidapi-key': RapidAPI,
       'x-rapidapi-host': 'tasty.p.rapidapi.com'

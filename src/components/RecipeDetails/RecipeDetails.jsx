@@ -9,14 +9,14 @@ function RecipeDetails(){
 const id =useParams();
 const dispatch=useDispatch();
 
+//select recipe details from the store
+const detail=useSelector(store=>store.details);
+const user=useSelector(store=>store.user);
+
 //to fetch details on load
 useEffect(()=>{
     dispatch ({type: 'FETCH_DETAILS', payload: id});
 },[])
-
-//select recipe details from the store
-const detail=useSelector(store=>store.details);
-const user=useSelector(store=>store.user);
 
 //conditionally render recipe details to avoid timing errors
 const getDetail=()=>{
@@ -58,11 +58,11 @@ const getDetail=()=>{
         //function to display video if available or not
         const getVideo=()=>{
             let videoDisplay=''
-            if(detail.renditions[0].url){
-                videoDisplay=<iframe src={detail.renditions[0].url} height="720" width="720"></iframe>
+            if(detail.renditions.length===0){
+                videoDisplay=<></>
             }//end if
             else{
-                videoDisplay= <></>
+                videoDisplay=<iframe src={detail.renditions[0].url} height="720" width="720"></iframe>
             }//end else
             return videoDisplay
          }//end getVideo
