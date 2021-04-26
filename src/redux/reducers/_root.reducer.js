@@ -7,6 +7,7 @@ import save from './save.reducer';
 import favorite from './favorite.reducer';
 import random from './random.reducer';
 import userRecipe from './userRecipe.reducer';
+import singleRecipe from './singleRecipe.reducer';
 
 
 // rootReducer is the primary reducer for our entire project
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   favorite,//recipes that the user has favorited
   random,//recipes for random page
   userRecipe, //recipes added by user
+  singleRecipe,//to get user recipe details
 });
 
 export default rootReducer;

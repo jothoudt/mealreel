@@ -16,6 +16,17 @@ const {
         res.sendStatus(500)});
   })
 
+  userRecipeRouter.get('/:id', (req, res)=>{
+    let recipeId=req.params.id
+    console.log(recipeId)
+    const fetchSingleRecipe=`SELECT * FROM "user_recipes" WHERE "id"=$1;`
+    pool.query(fetchSingleRecipe, [recipeId]).then(result=>{res.send(result.rows)})
+      .catch((err)=>{
+        res.sendStatus(500);
+      })
+
+  })
+
   userRecipeRouter.post('/', (req, res)=>{
     console.log(req.body)
     const addRecipeQuery= `INSERT INTO "user_recipes" ("name", "img_url", "credit", "cook_time", "servings", "ingredients", "instructions", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`

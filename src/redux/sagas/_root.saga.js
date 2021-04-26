@@ -8,6 +8,7 @@ import saveSaga from './save.saga';
 import favoriteSaga from './favorite.saga';
 import randomSaga from './random.saga';
 import userRecipeSaga from './userRecipe.saga';
+import singleRecipeSaga from './singleRecipe.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -27,5 +28,6 @@ export default function* rootSaga() {
     favoriteSaga(),//recipes favorited by user
     randomSaga(),//returns recipes to select random
     userRecipeSaga(),//for user recipes
+    singleRecipeSaga(),//for user recipe details
   ]);
 }

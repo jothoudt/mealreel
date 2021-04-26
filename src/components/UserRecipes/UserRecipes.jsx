@@ -9,7 +9,7 @@ function UserRecipes(){
 
     useEffect(()=>{
         dispatch({type:'FETCH_ALL_USER_RECIPES'});
-    })
+    },[])
 
     const getAllRecipes=()=>{
         let recipeDisplay=''
