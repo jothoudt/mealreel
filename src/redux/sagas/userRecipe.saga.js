@@ -4,6 +4,7 @@ import axios from 'axios';
 function* userRecipeSaga(){
     yield takeEvery('ADD_USER_RECIPE', addRecipe);
     yield takeEvery('FETCH_ALL_USER_RECIPES', fetchAllRecipes);
+    yield takeEvery('EDIT_USER_RECIPE', editRecipe);
 }
 
 function* addRecipe(action){
@@ -21,6 +22,16 @@ function* fetchAllRecipes(){
         yield put({type:'SET_USER_RECIPES', payload:allresponse.data});
     }
     catch(error){console.log('get user recipes', error);}
+}
+
+function* editRecipe(action){
+    console.log('in edit recipe');
+    try{
+        const editresponse=yield axios.put('/api/userrecipes/', action.payload);
+    }
+    catch(error){
+        console.log('edit recipe error', error);
+    }
 }
 
 export default userRecipeSaga;

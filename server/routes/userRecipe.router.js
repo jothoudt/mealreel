@@ -37,4 +37,15 @@ const {
     })
 })
 
+  userRecipeRouter.put('/', (req, res)=>{
+    const editRecipeQuery=`UPDATE "user_recipes" SET "name"=$1, "img_url"= $2, "credit"=$3, "cook_time"= $4, "servings"= $5, "ingredients"= $6, "instructions"= $7 WHERE "id"= $8;`;
+    pool.query(editRecipeQuery,[req.body.name, req.body.img_url, req.body.credit, req.body.cook_time, req.body.servings, req.body.ingredients, req.body.instructions, req.body.id])
+  .then(result=>{
+    console.log(result.rows)
+  }).catch(err=>{
+    console.log(err);
+    res.sendStatus(500);
+  })
+})
+
 module.exports=userRecipeRouter;

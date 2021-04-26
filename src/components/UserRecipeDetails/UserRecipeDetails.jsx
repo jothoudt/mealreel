@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
 
 
@@ -21,9 +21,12 @@ function UserRecipeDetails(){
         }   
         else{
             if(recipe[0].user_id===user.id){
+                let editRecipeLink = '/usereditrecipe/' + recipe[0].id;
                 editDisplay=
                 <>
+                <Link to={editRecipeLink}>
                 <button>Edit Recipe</button>
+                </Link>
                 </>
             }
             else{
