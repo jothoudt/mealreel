@@ -15,19 +15,21 @@ const nextRecipe=()=>{
     randomIndex= Math.floor((Math.random() * 25) + 1);
     console.log('try different recipe', randomIndex)
     return randomIndex;
-}
+}//end nextRecipe
 
 //function to call to 3rd party api for recipe
 const getRandomRecipe=()=>{
     dispatch({type:'FETCH_RANDOM'});
     randomIndex= Math.floor((Math.random() * 25) + 1);
     console.log(randomIndex)
-}
+}//end getRandomRecipe
 
+//dispatch on Load
 useEffect(()=>
   getRandomRecipe(),[]
-)
+)//end useEffect
 
+//conditional Rendering
 const getRandom=()=>{
     let randomDisplay=''
     if(!random){
@@ -35,9 +37,9 @@ const getRandom=()=>{
         <>
          <h3>Loading</h3>
         </>
-    }
+    }//end if
     else{
-        let randomRecipeDetails= '/recipedetails/' + random[Number(randomIndex)].id
+        let randomRecipeDetails= '/recipedetails/' + random[0].id
         randomDisplay=
         <>
         <p>{random[Number(randomIndex)].name}</p>
@@ -47,10 +49,10 @@ const getRandom=()=>{
           </Link>
           </div>
         </>
-    }
+    }//end else
     return randomDisplay;
 }
-
+//end getRandom
 
     return(
         

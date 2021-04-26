@@ -9,12 +9,14 @@ function UserPage() {
   const user = useSelector((store) => store.user);
   const saved = useSelector((store)=> store.save);
   const favorite =useSelector((store)=> store.favorite);
+  const myRecipes=useSelector((store)=>store.myRecipes)
 
   const dispatch=useDispatch()
 
   const onLoad=()=>{
     dispatch({type:'FETCH_SAVE', payload: user.id});
     dispatch({type:'FETCH_FAVORITE', payload:user.id});
+    dispatch({type:'FETCH_MY_RECIPES', payload:user.id});
   }
 
   useEffect(()=>
@@ -87,12 +89,41 @@ function UserPage() {
     return favoriteDisplay;
   }
 
+  const getMyRecipes=()=>{
+    let myRecipesDisplay=''
+    if(!myRecipes){
+      myRecipesDisplay= <> </>;
+    }
+    else{
+      
+      myRecipesDisplay= myRecipes.map((recipe, index)=>{
+        let saveLink = '/userrecipedetails/' + recipe.id;
+        //function for user to delete their own recipe
+        const deleteMyRecipes=()=>{
+          console.log('delete my recipe')
+          }
+        return(
+          <div className="recipe-card" key={index}>
+            <h4>{recipe.name}</h4>
+            <Link to={saveLink}>
+            <img src={recipe.img_url} height="150" width="150"></img>
+            </Link>
+            <div>
+              <button onClick={deleteMyRecipes}>Remove</button>
+            </div>
+          </div>
+        )
+      })
+    }
+    return myRecipesDisplay;
+  }
+
   return (
     <div className="container">
       <div className="welcome-message">
         <h1>{user.username}'s Profile</h1>
         <h2>Welcome, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
+        {/* <p>Your ID is: {user.id}</p> */}
       </div>
       <div className="favorite-recipes">
         <h2>Your favorite recipes</h2>
@@ -101,6 +132,9 @@ function UserPage() {
       <div className="to-try">
         <h2>Recipes you have saved that you would like to try:</h2>
         {getSavedRecipes()}
+      </div>
+      <div>
+        {getMyRecipes()}
       </div>
       <div className="find-new-recipes">
         <div className="search-recipes">
