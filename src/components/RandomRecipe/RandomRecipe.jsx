@@ -26,13 +26,16 @@ useEffect(()=>
 
 //conditional Rendering
 const getRandom=()=>{
+    //variable to be returned
     let randomDisplay=''
+    //if array empty display loading
     if(random.length=== 0){
         randomDisplay=
         <>
          <h3>Loading</h3>
         </>
     }//end if
+    //else  display a random recipe
     else{
         let randomRecipeDetails= '/recipedetails/' + random[randomIndex].id
         randomDisplay=
@@ -66,5 +69,5 @@ const getRandom=()=>{
         </div>
     )
 }
-
+//end getRandom
 export default RandomRecipe;

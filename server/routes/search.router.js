@@ -4,8 +4,10 @@ const searchRouter = express.Router();
 
 require('dotenv').config();
 
+//get search query results from 3rd party api
 searchRouter.get('/', (req, res) =>{
 
+  console.log(process.env.RapidAPI)
     let param=req.query["search"];
     const options = {
         method: 'GET',

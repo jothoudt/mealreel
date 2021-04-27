@@ -3,8 +3,9 @@ import axios from 'axios';
 
 function* detailsSaga(){
     yield takeEvery('FETCH_DETAILS', fetchDetails)
-}
+}//end detailsSaga
 
+//function to get a recipes details from 3rd party api
 function* fetchDetails(action){
     let id=action.payload.id;
     try{

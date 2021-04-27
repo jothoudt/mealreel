@@ -4,6 +4,7 @@ const detailsRouter = express.Router();
 
 require('dotenv').config();
 
+//get recipes from 3rd party api
 detailsRouter.get('/', (req, res)=>{
   let recipeId=req.params
   console.log(recipeId);

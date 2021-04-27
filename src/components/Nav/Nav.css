@@ -5,7 +5,7 @@
   align-items: center;
 
   margin: 0 0 30px;
-  background-color: #00acb0;
+  background-color: #769FCD;
   overflow: hidden;
 }
 
@@ -16,19 +16,20 @@
 .nav-title {
   font-size: 24px;
   font-weight: 700;
-  color: #f2f2f2;
+  color: black;
   padding-left: 10px;
   margin: 0;
 }
 
 .navLink {
   display: inline-block;
-  color: #f2f2f2;
-  background-color: #00acb0;
+  color: black;
+  background-color: #769FCD;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
   font-size: 15px;
+  font-family:'Gochi Hand', cursive, sans-serif;
 
   /* these last two make the logout button in
   the nav bar look like another link */

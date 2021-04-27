@@ -3,8 +3,9 @@ import axios from 'axios';
 
 function* myRecipesSaga(){
     yield takeEvery('FETCH_MY_RECIPES', fetchMyRecipes)
-}
+}//end myRecipesSaga
 
+//function user to get their recipe from database
 function* fetchMyRecipes(action){
     try{
         console.log('in fetch myRecipes')
@@ -13,6 +14,6 @@ function* fetchMyRecipes(action){
         }
     catch(error){ console.log('get results error', error);
     }
-}
+}//end fetchMyRecipes
 
 export default myRecipesSaga;

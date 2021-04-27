@@ -1,3 +1,45 @@
-.to-try{
-    background-color: grey;
+.recipe-carousel{
+    width: 100%;
+    height: 360px;
+    background-color: #B9D7EA;
+    overflow: auto;
+    white-space:nowrap;
+    margin: 10px;
 }
+.recipe-carousel .recipe-card{
+    display: inline-block;
+    margin: 10px;
+}
+.recipe-card-details{
+    height: 350px;
+    width: 200x;
+}
+.find-new-recipes-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.search-recipes{
+    width: 25%;
+    margin: 25px;
+    padding: 10px;
+    align-content: center;
+}
+.random-recipe{
+    width: 25%;
+    margin: 25px;
+    padding: 10px;
+    align-content: center;
+}
+.user-recipes{
+    width: 25%;
+    margin: 25px;
+    padding: 10px;
+    align-content: center;  
+}
+.BUTTON{
+    background-color: #769FCD ;
+}
+.find-new{
+    text-align: center;
+}
+

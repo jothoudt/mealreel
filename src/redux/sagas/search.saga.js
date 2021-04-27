@@ -3,8 +3,9 @@ import axios from 'axios';
 
 function* searchSaga(){
     yield takeEvery('FETCH_SEARCH', fetchSearch)
-}
+}//end searchSaga
 
+//to fetch recipes from 3rd party api that match the search
 function* fetchSearch(action){
     try{
         console.log('in fetch search')
@@ -13,6 +14,6 @@ function* fetchSearch(action){
         }
     catch(error){ console.log('get results error', error);
     }
-}
+}//end fetchSearch
 
 export default searchSaga;

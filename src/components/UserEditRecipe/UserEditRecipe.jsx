@@ -4,14 +4,16 @@ import {useHistory, useParams} from 'react-router-dom';
 
 function UserEditRecipe(){
 
+  //define useParams, useDispatch, useHistory
   const id=useParams();
-  
   const dispatch=useDispatch();
   const history=useHistory();
 
+  //get reducers needed from the store
   const user= useSelector((store) => store.user);
   const recipe=useSelector((store)=> store.singleRecipe)
 
+  //define useState for each property of the recipe with prepopulated text from the database
   let [recipeName, setRecipeName]=useState(recipe[0].name);
   let [recipeCredit, setRecipeCredit]=useState(recipe[0].credit);
   let [cookTime, setCookTime]=useState(recipe[0].cook_time);
@@ -20,8 +22,10 @@ function UserEditRecipe(){
   let [ingredients, setIngredients]=useState(recipe[0].ingredients);
   let [instructions, setInstructions]=useState(recipe[0].instructions);
 
+  //function to dispatch edited recipe
   const editRecipe=()=>{
     console.log(id)
+    //object sent to update the database
     let editRecipe={
       name: recipeName,
       img_url: imageUrl,
@@ -32,11 +36,15 @@ function UserEditRecipe(){
       instructions: instructions,
       user_id: user.id,
       id: recipe[0].id
-    }
+    }//end object
+    //dispatch to update recipe
     dispatch({type: 'EDIT_USER_RECIPE', payload:editRecipe});
+    //directs the user back to user recipes
     history.push('/userrecipes')
   }
+  //end editRecipe
 
+  //dispatch for the recipes details on load
   useEffect(()=>{
     dispatch({type:'FETCH_THIS_RECIPE', payload: id});
 },[])

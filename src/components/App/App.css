@@ -5,8 +5,10 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Gochi Hand', cursive, sans-serif;
+  font-size: large;
   margin: 0px;
+  background-color: #D6E6F2;
 }
 
 img {
@@ -37,6 +39,7 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  font-family:'Gochi Hand', cursive, sans-serif;
 }
 
 .btn_sizeMin {

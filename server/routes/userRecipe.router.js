@@ -8,6 +8,7 @@ const {
   const pool = require('../modules/pool');
   const userStrategy = require('../strategies/user.strategy');
 
+  //get all user recipes
   userRecipeRouter.get('/', (req, res)=>{
     const fetchAllQuery=`SELECT * FROM "user_recipes";`;
     pool.query(fetchAllQuery).then(result=>{res.send(result.rows)})
@@ -15,7 +16,7 @@ const {
         console.log(err)
         res.sendStatus(500)});
   })
-
+  //get single recipe details
   userRecipeRouter.get('/:id', (req, res)=>{
     let recipeId=req.params.id
     console.log(recipeId)
@@ -26,7 +27,7 @@ const {
       })
 
   })
-
+  //add a recipe to the database
   userRecipeRouter.post('/', (req, res)=>{
     console.log(req.body)
     const addRecipeQuery= `INSERT INTO "user_recipes" ("name", "img_url", "credit", "cook_time", "servings", "ingredients", "instructions", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
@@ -36,7 +37,7 @@ const {
         res.sendStatus(500);
     })
 })
-
+  //edit recipe in the database
   userRecipeRouter.put('/', (req, res)=>{
     const editRecipeQuery=`UPDATE "user_recipes" SET "name"=$1, "img_url"= $2, "credit"=$3, "cook_time"= $4, "servings"= $5, "ingredients"= $6, "instructions"= $7 WHERE "id"= $8;`;
     pool.query(editRecipeQuery,[req.body.name, req.body.img_url, req.body.credit, req.body.cook_time, req.body.servings, req.body.ingredients, req.body.instructions, req.body.id])

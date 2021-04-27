@@ -4,11 +4,14 @@ import {useHistory} from 'react-router-dom';
 
 function UserAddRecipe(){
 
+  //define dispatch and history
   const dispatch=useDispatch();
   const history=useHistory();
 
+  //select reducer from store
   const user= useSelector((store) => store.user);
 
+  //define useState to set the properties of the recipe
   let [recipeName, setRecipeName]=useState('');
   let [recipeCredit, setRecipeCredit]=useState('');
   let [cookTime, setCookTime]=useState('');
@@ -17,7 +20,9 @@ function UserAddRecipe(){
   let [ingredients, setIngredients]=useState('');
   let [instructions, setInstructions]=useState('');
 
+  //function to submit recipe to database
   const submitRecipe=()=>{
+    //object to send to the database
     let newRecipe={
       name: recipeName,
       img_url: imageUrl,
@@ -27,11 +32,13 @@ function UserAddRecipe(){
       ingredients: ingredients,
       instructions: instructions,
       user_id: user.id
-    }
+    }//end newRecipe object
+    //dispatch the recipe to the database
     dispatch({type: 'ADD_USER_RECIPE', payload:newRecipe});
+    //direct user back to userrecipes
     history.push('/userrecipes')
   }
-
+  //end submitRecipe
     return(
         <div className='add-form'>
           <form>

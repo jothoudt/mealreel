@@ -3,8 +3,9 @@ import axios from 'axios';
 
 function* singleRecipeSaga(){
     yield takeEvery('FETCH_THIS_RECIPE', fetchUserRecipe)
-}
+}//end singleRecipeSaga
 
+//gets user recipe details from the database
 function* fetchUserRecipe(action){
     let id=action.payload.id;
     console.log(id)
@@ -15,6 +16,6 @@ function* fetchUserRecipe(action){
         }
     catch(error){ console.log('get results error', error);
     }
-}
+}//end fetchUserRecipe
 
 export default singleRecipeSaga;

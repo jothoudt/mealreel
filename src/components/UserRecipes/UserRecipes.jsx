@@ -3,22 +3,27 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 function UserRecipes(){
-
+    //define dispatch useSelector
     const dispatch=useDispatch();
     const recipes=useSelector(store=>store.userRecipe);
 
+    //dispatch on load
     useEffect(()=>{
         dispatch({type:'FETCH_ALL_USER_RECIPES'});
-    },[])
+    },[])//end useEffect
 
+    //function to conditally render recipe details
     const getAllRecipes=()=>{
+        //variable to return for display
         let recipeDisplay=''
+        //if recipe reducer hasn't been set yet, display loading
         if(!recipes){
             recipeDisplay=
             <>
             <h2>Loading</h2>
             </>
-        }
+        }//end if
+        //else displays the recipes when the reducer is set
         else{
             recipeDisplay=
             <>
@@ -36,9 +41,10 @@ function UserRecipes(){
                 )
             })}
             </>
-        }
+        }//end else
         return recipeDisplay;
     }
+    //end getAllRecipes
 
     return(
         <>
@@ -54,5 +60,5 @@ function UserRecipes(){
         </>
     )
 }
-
+//end User Recipes
 export default UserRecipes;
