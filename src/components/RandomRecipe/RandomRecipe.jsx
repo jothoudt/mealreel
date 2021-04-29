@@ -2,6 +2,24 @@ import React, {useEffect,useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import './RandomRecipe.css';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { CardMedia } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+    typography: {
+      fontSize:30,
+      fontFamily: [
+        'Gochi Hand', 
+        'cursive', 
+        'sans-serif'
+      ].join(','),
+    },});
 
 function RandomRecipe(){
 
@@ -39,14 +57,32 @@ const getRandom=()=>{
     else{
         let randomRecipeDetails= '/recipedetails/' + random[randomIndex].id
         randomDisplay=
-        <>
-        <p>{random[randomIndex].name}</p>
-          <div>
+        // <>
+        // <p>{random[randomIndex].name}</p>
+        //   <div>
+        //     <Link to={randomRecipeDetails}>
+        //   <img src={random[randomIndex].thumbnail_url} height="250" width="180"></img>
+        //   </Link>
+        //   </div>
+        // </>
+        <Card style={{height:'450px', width: '300px', margin: '25px', backgroundColor:'#F7FBFC'}}>
+        {/* <CardActionArea> */}
+          <CardContent style={{padding:'10px'}}>
+          <CardMedia
+          image={random[randomIndex].thumbnail_url}
+          // height="250" width="180"
+          title={random[randomIndex].name} style={{height:'300px', width:'100%', alignContent:'center'}}/>
+          <Typography gutterBottom variant="h5" component="h2" style={{padding:'5px'}}>
+          {random[randomIndex].name}
+          </Typography>
+          </CardContent>
+          {/* </CardActionArea> */}
+          <CardActions>
             <Link to={randomRecipeDetails}>
-          <img src={random[randomIndex].thumbnail_url} height="250" width="180"></img>
-          </Link>
-          </div>
-        </>
+              <Button>See Recipe Details</Button>
+            </Link>
+          </CardActions>   
+        </Card>
     }//end else
     return randomDisplay;
 }
@@ -58,11 +94,7 @@ const getRandom=()=>{
           <div>
             <h1>Random Recipe</h1>
           </div>
-          <div className="random-recipe-section">
-              <h5>hi</h5>
               {getRandom()}
-              {/* {<img src=""} */}
-          </div>
           <div>
               <button onClick={getRandomRecipe}>Try Again</button>
           </div>

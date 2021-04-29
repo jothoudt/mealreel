@@ -1,0 +1,26 @@
+.user-recipe-page{
+    text-align: center;
+    background-color: #BBE1FA;
+    border: 25px solid #BBE1FA
+}
+.large-image{
+    border: 7px solid #3282B8;
+}
+.recipe-title{
+    background-color: #BBE1FA ;
+    border: 7px solid #3282B8;
+    margin: 5px;
+}
+.recipe-instructions{
+    background-color: #BBE1FA;
+    border: 7px solid #3282B8;
+    margin: 50px;
+}
+.recipe-ingredients{
+    background-color: #BBE1FA; 
+    border: 7px solid #3282B8;
+    margin: 50px;
+}
+.edit-button{
+    margin: 10px
+}

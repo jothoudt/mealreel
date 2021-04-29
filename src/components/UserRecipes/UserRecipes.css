@@ -1,0 +1,8 @@
+.Grid{
+    margin: 25px;
+    background-color: #3282B8;
+}
+
+Button:hover{
+       background-color: #BBE1FA;
+}

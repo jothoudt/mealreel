@@ -2,8 +2,23 @@ import React, {useEffect} from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { CardMedia } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import './UserPage.css';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Gochi Hand', 
+      'cursive', 
+      'sans-serif'
+    ].join(','),
+  },});
 
 function UserPage() {
   // select reducers used 
@@ -38,8 +53,14 @@ function UserPage() {
     else{
       //map through the saved recipes reducer
       savedDisplay= saved.map((recipe, index)=>{
-        //link used to navigate to recipe details
-        let saveLink = '/recipedetails/' + recipe.recipe_id;
+        let saveLink=''
+        //conditional link used to navigate to recipe details
+        if(recipe.recipe_id >= 1000){
+        saveLink = '/recipedetails/' + recipe.recipe_id;
+      }
+      else{
+        saveLink='/userrecipedetails/' + recipe.recipe_id
+      }
         //function that deletes saved recipe
         const deleteSave=()=>{
           //parameters to send in dispatch
@@ -52,16 +73,37 @@ function UserPage() {
         }
         return(
           
+          // <div className="recipe-card" key={index}>
+          //   <div className="recipe-card-details">
+          //   <h4>{recipe.recipe_name}</h4>
+          //   <Link to={saveLink}>
+          //   <img src={recipe.recipe_img} height="150" width="150"></img>
+          //   </Link>
+          //   <div>
+          //     <Button style={{backgroundColor:"#769FCD"}} onClick={deleteSave}>Remove</Button>
+          //   </div>
+          //   </div>
+          // </div>
           <div className="recipe-card" key={index}>
-            <div className="recipe-card-details">
-            <h4>{recipe.recipe_name}</h4>
-            <Link to={saveLink}>
-            <img src={recipe.recipe_img} height="150" width="150"></img>
-            </Link>
-            <div>
-              <Button style={{backgroundColor:"#769FCD"}} onClick={deleteSave}>Remove</Button>
-            </div>
-            </div>
+          <Card style={{height:'325px', width: '300px', margin: '5px', backgroundColor:'#F7FBFC'}}>
+          {/* <CardActionArea> */}
+            <CardContent style={{padding:'10px'}}>
+            <CardMedia
+            image={recipe.recipe_img} 
+            // height="250" width="180"
+            title={recipe.recipe_name} style={{height:'200px', width:'100%', alignContent:'center'}}/>
+            <Typography gutterBottom variant="h5" component="h2" style={{padding:'5px'}}>
+            {recipe.recipe_name}
+            </Typography>
+            </CardContent>
+            {/* </CardActionArea> */}
+            <CardActions>
+              <Link to={saveLink}>
+                <Button style={{backgroundColor:"#3282B8"}}>See Recipe Details</Button>
+              </Link>
+              <Button style={{backgroundColor:"#3282B8"}} onClick={deleteSave}>Remove</Button>
+            </CardActions>   
+          </Card>
           </div>
         )
       })
@@ -80,8 +122,16 @@ function UserPage() {
     //else display users favorite recipes
     else{
       //map through favorite recipes array
+      let favoriteLink ='';
       favoriteDisplay= favorite.map((recipe, index)=>{
-        let favoriteLink = '/recipedetails/' + recipe.recipe_id;
+        ///conditional to decide if it is targeting user recipes or 3rd party api party
+        //all 3rd party apis have an id of 1000 or greater
+        if(recipe.recipe_id >= 1000){
+        favoriteLink = '/recipedetails/' + recipe.recipe_id;
+        }
+        else{
+        favoriteLink= '/userrecipedetails/' + recipe.recipe_id;
+        }
         //function to delete favorite recipe
         const deleteFavorite=()=>{
           let params={
@@ -92,14 +142,36 @@ function UserPage() {
           dispatch({type:'FETCH_FAVORITE', payload: user.id})
         }
         return(
+          // <div className="recipe-card" key={index}>
+          //   <h4>{recipe.recipe_name}</h4>
+          //   <Link to={favoriteLink}>
+          //     <img src={recipe.recipe_img} height="150" width="150"></img>
+          //   </Link>
+          //   <div>
+          //     <Button style={{backgroundColor:"#769FCD"}} onClick={deleteFavorite}>Remove</Button>
+          //   </div>
+          // </div>
+          // <div className="recipe-card" key={index}>
           <div className="recipe-card" key={index}>
-            <h4>{recipe.recipe_name}</h4>
-            <Link to={favoriteLink}>
-              <img src={recipe.recipe_img} height="150" width="150"></img>
-            </Link>
-            <div>
-              <Button style={{backgroundColor:"#769FCD"}} onClick={deleteFavorite}>Remove</Button>
-            </div>
+          <Card style={{height:'325px', width: '300px', margin: '5px', backgroundColor:'#F7FBFC'}}>
+          {/* <CardActionArea> */}
+            <CardContent style={{padding:'10px'}}>
+            <CardMedia
+            image={recipe.recipe_img} 
+            // height="250" width="180"
+            title={recipe.recipe_name} style={{height:'200px', width:'100%', alignContent:'center'}}/>
+            <Typography gutterBottom variant="h5" component="h2" style={{padding:'5px'}}>
+            {recipe.recipe_name}
+            </Typography>
+            </CardContent>
+            {/* </CardActionArea> */}
+            <CardActions>
+              <Link to={favoriteLink}>
+                <Button style={{backgroundColor:"#3282B8"}}>See Recipe Details</Button>
+              </Link>
+              <Button style={{backgroundColor:"#3282B8"}} onClick={deleteFavorite}>Remove</Button>
+            </CardActions>   
+          </Card>
           </div>
         )
       })
@@ -125,14 +197,35 @@ function UserPage() {
           console.log('delete my recipe')
           }
         return(
+          // <div className="recipe-card" key={index}>
+          //   <h4>{recipe.name}</h4>
+          //   <Link to={saveLink}>
+          //   <img src={recipe.img_url} height="150" width="150"></img>
+          //   </Link>
+          //   <div>
+          //     <Button style={{backgroundColor:"#769FCD"}} onClick={deleteMyRecipes}>Remove</Button>
+          //   </div>
+          // </div>
           <div className="recipe-card" key={index}>
-            <h4>{recipe.name}</h4>
-            <Link to={saveLink}>
-            <img src={recipe.img_url} height="150" width="150"></img>
-            </Link>
-            <div>
-              <Button style={{backgroundColor:"#769FCD"}} onClick={deleteMyRecipes}>Remove</Button>
-            </div>
+          <Card style={{height:'325px', width: '300px', margin: '5px', backgroundColor:'#F7FBFC'}}>
+          {/* <CardActionArea> */}
+            <CardContent style={{padding:'10px'}}>
+            <CardMedia
+            image={recipe.img_url}
+            // height="250" width="180"
+            title={recipe.name} style={{height:'200px', width:'100%', alignContent:'center'}}/>
+            <Typography gutterBottom variant="h5" component="h2" style={{padding:'5px'}}>
+            {recipe.name}
+            </Typography>
+            </CardContent>
+            {/* </CardActionArea> */}
+            <CardActions>
+              <Link to={saveLink}>
+                <Button style={{backgroundColor:"#3282B8"}}>See Recipe Details</Button>
+              </Link>
+              <Button style={{backgroundColor:"#3282B8"}} onClick={deleteMyRecipes}>Remove</Button>
+            </CardActions>   
+          </Card>
           </div>
         )
       })
@@ -141,6 +234,7 @@ function UserPage() {
   }
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="container">
       <div className="welcome-message">
         <h1>{user.username}'s Profile</h1>
@@ -148,20 +242,20 @@ function UserPage() {
         {/* <p>Your ID is: {user.id}</p> */}
       </div>
       <div className="favorite-recipes">
+      <h2>Your favorite recipes</h2>
       <div className="recipe-carousel">
-        <h2>Your favorite recipes</h2>
         {getFavoriteRecipes()}
       </div>
       </div>
       <div className="to-try">
+      <h2>Recipes you have saved that you would like to try:</h2>
       <div className="recipe-carousel">
-        <h2>Recipes you have saved that you would like to try:</h2>
         {getSavedRecipes()}
         </div>
       </div>
       <div>
+      <h2>Recipes you have shared:</h2>
       <div className="recipe-carousel">
-        <h2>Recipes you have shared:</h2>
         {getMyRecipes()}
       </div>
       </div>
@@ -173,21 +267,21 @@ function UserPage() {
           <h3>Traditional Search</h3>
           <p>Enter keywords in search to find recipes</p>
           <Link to ="/searchrecipe">
-            <Button style={{backgroundColor:"#769FCD"}}>Search</Button>
+            <Button style={{backgroundColor:"#3282B8"}}>Search</Button>
           </Link>
         </div>
         <div className="random-recipe">
           <h3>Try Something New</h3>
           <p>Click for a Random Recipe</p>
           <Link to="/randomrecipe">
-            <Button style={{backgroundColor:"#769FCD"}}> Random Recipe</Button>
+            <Button style={{backgroundColor:"#3282B8"}}> Random Recipe</Button>
           </Link>
         </div>
         <div className="user-recipes">
           <h3>User Recipes</h3>
           <p>Recipes Other Users Have Shared</p>
           <Link to="/userrecipes">
-            <Button style={{backgroundColor:"#769FCD"}} variant="outlined" variant="contained">User Recipes</Button>
+            <Button style={{backgroundColor:"#3282B8"}} variant="outlined" variant="contained">User Recipes</Button>
           </Link>
         </div>
         </div>
@@ -195,6 +289,7 @@ function UserPage() {
         <LogOutButton className="btn" />
       </div>
     </div>
+    </ThemeProvider>
   );
 }
 

@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react';
 import {useParams, Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
+import Button from '@material-ui/core/Button';
+import './UserRecipeDetails.css'
 
 
 function UserRecipeDetails(){
@@ -27,7 +29,9 @@ function UserRecipeDetails(){
                 editDisplay=
                 <>
                 <Link to={editRecipeLink}>
-                <button>Edit Recipe</button>
+                <span className="button-border">
+                <Button  style={{backgroundColor:"#3282B8"}}>Edit Recipe</Button>
+                </span>
                 </Link>
                 </>
             }//end if
@@ -76,22 +80,25 @@ function UserRecipeDetails(){
             userRecipeDisplay=
             <div>
                 <div>
-                    <h1><strong>{recipe[0].name}</strong></h1>
+                    <h1><strong><span className="recipe-title"> {recipe[0].name}  </span> </strong></h1>
                 </div>
                 <div>
-                    <img src={recipe[0].img_url}></img>
+                    <img src={recipe[0].img_url} className="large-image"></img>
                 </div>
-                <button onClick={saveRecipe}>Save Recipe</button> <button onClick={favoriteRecipe}>Add to Favorites</button>
+                <span className="button-border">
+                <Button  style={{backgroundColor:"#3282B8"}} onClick={saveRecipe}>Save Recipe</Button></span> <span className="button-border"><Button  style={{backgroundColor:"#3282B8"}} onClick={favoriteRecipe}>Add to Favorites</Button>
+                </span>
                 <div>
-                    <p><strong>Credit to: </strong>{recipe[0].credit}</p>
-                    <p><strong>Cook Time: </strong>{recipe[0].cook_time} </p>
-                    <p><strong>Servings: </strong>{recipe[0].servings}</p>
-                    <h2><strong>Ingredients</strong></h2>
-                    <div>
+                    <p><span className="recipe-title"><strong> Credit to: </strong>{recipe[0].credit}  </span> </p>
+                    <p><span className="recipe-title"><strong>Cook Time: </strong>{recipe[0].cook_time} </span> </p>
+                    <p><span className="recipe-title"><strong>Cook Time: </strong>{recipe[0].cook_time}</span>  </p>
+                    <p><span className="recipe-title"><strong>Servings: </strong>{recipe[0].servings} </span> </p>
+                    <h2><span className="recipe-title"><strong>Ingredients</strong></span> </h2>
+                    <div className='recipe-ingredients'>
                         <p>{recipe[0].ingredients}</p>
                     </div>
-                    <h2><strong>Instructions</strong></h2>
-                    <div>
+                    <h2><span className="recipe-title"><strong>Instructions</strong></span></h2>
+                    <div className='recipe-instructions'>
                       <p>{recipe[0].instructions}</p>
                     </div>
                 </div>
@@ -102,9 +109,11 @@ function UserRecipeDetails(){
     //end recipeDisplay
     return(
         <>
-        <div>
+        <div className='user-recipe-page'>
             <div>
+                <div className="edit-button">
                 {recipeEdit()}
+                </div>
                 {recipeDisplay()}
             </div>
         </div>

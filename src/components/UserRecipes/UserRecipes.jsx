@@ -1,6 +1,29 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { CardMedia } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { ThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
+import './UserRecipes.css'
+
+const theme = createMuiTheme({
+  button: {
+    "&:hover": {
+      backgroundColor: '#BBE1FA',
+    }
+  },  
+  typography: {
+      fontFamily: [
+        'Gochi Hand', 
+        'cursive', 
+        'sans-serif'
+      ].join(','),
+    },});
 
 function UserRecipes(){
     //define dispatch useSelector
@@ -30,14 +53,31 @@ function UserRecipes(){
             {recipes.map((recipe, index)=>{
                 let userRecipeLink= '/userrecipedetails/' + recipe.id
                 return(
-                    <div key={index}>
-                      <div>
-                        <p>{recipe.name}</p>
-                      </div>
-                      <Link to={userRecipeLink}>
-                        <img src={recipe.img_url}></img>
-                      </Link>
-                    </div>
+                    // <div key={index}>
+                    //   <div>
+                    //     <p>{recipe.name}</p>
+                    //   </div>
+                    //   <Link to={userRecipeLink}>
+                    //     <img src={recipe.img_url}></img>
+                    //   </Link>
+                    // </div>
+                    <Grid item xs={12} spacing={6} key={index}>
+                      <Card style={{height:'480px', width: '300px', margin: '25px', backgroundColor:'#F7FBFC'}}>
+                        <CardContent style={{padding:'10px'}}>
+                          <CardMedia
+                            image={recipe.img_url} 
+                            title={recipe.name} style={{height:'300px', width:'100%', alignContent:'center'}}/>
+                          <Typography gutterBottom variant="h5" component="h2" style={{padding:'3px'}}>
+                          {recipe.name} 
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          <Link to={userRecipeLink}>
+                            <Button style={{backgroundColor:"#3282B8"}}>See Recipe Details</Button>
+                          </Link>
+                        </CardActions>   
+                      </Card>
+                    </Grid>
                 )
             })}
             </>
@@ -47,17 +87,19 @@ function UserRecipes(){
     //end getAllRecipes
 
     return(
-        <>
-        <h1>User Recipes</h1>
-        <div className="add-a-recipe">
+        <ThemeProvider theme={theme}>
+          <h1>User Recipes</h1>
+          <div className="add-a-recipe">
             <Link to="/useraddrecipe">
-              <button>Add A Recipe</button>
+              <Button style={{backgroundColor:"#3282B8"}} >Add A Recipe</Button>
             </Link>
-        <div>
+          <div className='grid-recipes'>
+          <Grid container spacing={1}>
             {getAllRecipes()}
-        </div>
-        </div>
-        </>
+          </Grid>
+          </div>
+          </div>
+        </ThemeProvider>
     )
 }
 //end User Recipes

@@ -3,8 +3,17 @@ import React, {useState} from 'react'
 import Button from '@material-ui/core/Button';
 import EachRecipe from '../EachRecipe/EachRecipe';
 import Grid from '@material-ui/core/Grid'
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import './SearchRecipe.css'
 
-
+const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        'Gochi Hand', 
+        'cursive', 
+        'sans-serif'
+      ].join(','),
+    },});
 
 function SearchRecipes(){
     //define dispatch
@@ -32,16 +41,20 @@ function SearchRecipes(){
     
 
     return(
-        <>
-        <input type="text" placeholder="Search For Recipes" onChange={handleSearch}></input>
-        <Button style={{backgroundColor:"#769FCD"}} onClick={fetchRecipes}>Search</Button>
-        <Grid container spacing={1}>
-        {searchItems.map((item, id) =>  {
+        <ThemeProvider theme={theme}>
+          <div className="search-area">
+            <input type="text" placeholder="Search For Recipes" onChange={handleSearch}></input>
+            <Button style={{backgroundColor:'#3282B8'}} onClick={fetchRecipes}>Search</Button>
+          </div>
+          <div className='grid-recipes'>
+          <Grid container spacing={1}>
+            {searchItems.map((item, id) =>  {
                     return (<EachRecipe recipe={item} key={id} />);
                     }
-    )}
-        </Grid>
-    </>
+            )}
+          </Grid>
+          </div>
+        </ThemeProvider>
     )}
 
 export default SearchRecipes;
