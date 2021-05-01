@@ -47,7 +47,7 @@ const getRandom=()=>{
     //variable to be returned
     let randomDisplay=''
     //if array empty display loading
-    if(random.length=== 0){
+    if(random.length=== 0 || !random){
         randomDisplay=
         <>
          <h3>Loading</h3>
@@ -65,7 +65,7 @@ const getRandom=()=>{
         //   </Link>
         //   </div>
         // </>
-        <Card style={{height:'450px', width: '300px', margin: '25px', backgroundColor:'#F7FBFC'}}>
+        <Card style={{height:'500px', width: '300px', margin: '25px', backgroundColor:'#F7FBFC'}}>
         {/* <CardActionArea> */}
           <CardContent style={{padding:'10px'}}>
           <CardMedia
@@ -79,7 +79,7 @@ const getRandom=()=>{
           {/* </CardActionArea> */}
           <CardActions>
             <Link to={randomRecipeDetails}>
-              <Button>See Recipe Details</Button>
+              <Button style={{backgroundColor:"#3282B8", color: "white"}}>See Recipe Details</Button>
             </Link>
           </CardActions>   
         </Card>
@@ -96,7 +96,7 @@ const getRandom=()=>{
           </div>
               {getRandom()}
           <div>
-              <button onClick={getRandomRecipe}>Try Again</button>
+              <Button style={{backgroundColor:"#3282B8", color: "white"}} onClick={getRandomRecipe}>Try Again</Button>
           </div>
         </div>
     )

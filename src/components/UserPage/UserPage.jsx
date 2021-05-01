@@ -99,9 +99,9 @@ function UserPage() {
             {/* </CardActionArea> */}
             <CardActions>
               <Link to={saveLink}>
-                <Button style={{backgroundColor:"#3282B8"}}>See Recipe Details</Button>
+                <Button style={{backgroundColor:"#3282B8", color: "white"}}>See Recipe Details</Button>
               </Link>
-              <Button style={{backgroundColor:"#3282B8"}} onClick={deleteSave}>Remove</Button>
+              <Button style={{backgroundColor:"#3282B8", color: "white"}} onClick={deleteSave}>Remove</Button>
             </CardActions>   
           </Card>
           </div>
@@ -167,9 +167,9 @@ function UserPage() {
             {/* </CardActionArea> */}
             <CardActions>
               <Link to={favoriteLink}>
-                <Button style={{backgroundColor:"#3282B8"}}>See Recipe Details</Button>
+                <Button style={{backgroundColor:"#3282B8", color: "white"}}>See Recipe Details</Button>
               </Link>
-              <Button style={{backgroundColor:"#3282B8"}} onClick={deleteFavorite}>Remove</Button>
+              <Button style={{backgroundColor:"#3282B8", color: "white"}} onClick={deleteFavorite}>Remove</Button>
             </CardActions>   
           </Card>
           </div>
@@ -221,9 +221,9 @@ function UserPage() {
             {/* </CardActionArea> */}
             <CardActions>
               <Link to={saveLink}>
-                <Button style={{backgroundColor:"#3282B8"}}>See Recipe Details</Button>
+                <Button style={{backgroundColor:"#3282B8", color: "white"}}>See Recipe Details</Button>
               </Link>
-              <Button style={{backgroundColor:"#3282B8"}} onClick={deleteMyRecipes}>Remove</Button>
+              <Button style={{backgroundColor:"#3282B8", color: "white"}} onClick={deleteMyRecipes}>Remove</Button>
             </CardActions>   
           </Card>
           </div>
@@ -267,21 +267,21 @@ function UserPage() {
           <h3>Traditional Search</h3>
           <p>Enter keywords in search to find recipes</p>
           <Link to ="/searchrecipe">
-            <Button style={{backgroundColor:"#3282B8"}}>Search</Button>
+            <Button style={{backgroundColor:"#3282B8", color: "white"}}>Search</Button>
           </Link>
         </div>
         <div className="random-recipe">
           <h3>Try Something New</h3>
           <p>Click for a Random Recipe</p>
           <Link to="/randomrecipe">
-            <Button style={{backgroundColor:"#3282B8"}}> Random Recipe</Button>
+            <Button style={{backgroundColor:"#3282B8", color: "white"}}> Random Recipe</Button>
           </Link>
         </div>
         <div className="user-recipes">
           <h3>User Recipes</h3>
           <p>Recipes Other Users Have Shared</p>
           <Link to="/userrecipes">
-            <Button style={{backgroundColor:"#3282B8"}} variant="outlined" variant="contained">User Recipes</Button>
+            <Button style={{backgroundColor:"#3282B8", color: "white"}} variant="outlined" variant="contained">User Recipes</Button>
           </Link>
         </div>
         </div>

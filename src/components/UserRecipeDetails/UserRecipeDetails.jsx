@@ -30,7 +30,7 @@ function UserRecipeDetails(){
                 <>
                 <Link to={editRecipeLink}>
                 <span className="button-border">
-                <Button  style={{backgroundColor:"#3282B8"}}>Edit Recipe</Button>
+                <Button  style={{backgroundColor:"#3282B8", color: "white"}}>Edit Recipe</Button>
                 </span>
                 </Link>
                 </>
@@ -86,7 +86,7 @@ function UserRecipeDetails(){
                     <img src={recipe[0].img_url} className="large-image"></img>
                 </div>
                 <span className="button-border">
-                <Button  style={{backgroundColor:"#3282B8"}} onClick={saveRecipe}>Save Recipe</Button></span> <span className="button-border"><Button  style={{backgroundColor:"#3282B8"}} onClick={favoriteRecipe}>Add to Favorites</Button>
+                <Button  style={{backgroundColor:"#3282B8", color: "white"}} onClick={saveRecipe}>Save Recipe</Button></span> <span className="button-border"><Button  style={{backgroundColor:"#3282B8", color: "white"}} onClick={favoriteRecipe}>Add to Favorites</Button>
                 </span>
                 <div>
                     <p><span className="recipe-title"><strong> Credit to: </strong>{recipe[0].credit}  </span> </p>

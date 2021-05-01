@@ -11,10 +11,10 @@ detailsRouter.get('/:id', (req, res)=>{
 
 const option = {
   method: 'GET',
-  url: 'https://tasty.p.rapidapi.com/recipes/detail',
+  url: RapidAPI,
   params: {id: recipeId.id},
   headers: {
-    'x-rapidapi-key':RapidAPI,
+    'x-rapidapi-key':'c508c19c3bmsh5d065d441287af7p1aa3fajsn132790e1a658',
     'x-rapidapi-host': 'tasty.p.rapidapi.com'
   }
 };

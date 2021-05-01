@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import {useParams} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux';
-
+import Button from '@material-ui/core/Button';
+import './RecipeDetails.css'
 
 function RecipeDetails(){
 
@@ -62,7 +63,7 @@ const getDetail=()=>{
                 videoDisplay=<></>
             }//end if
             else{
-                videoDisplay=<iframe src={detail.renditions[0].url} height="720" width="720"></iframe>
+                videoDisplay= <iframe src={detail.renditions[0].url} height="720" width="720" className="video-frame"></iframe>
             }//end else
             return videoDisplay
          }//end getVideo
@@ -70,10 +71,15 @@ const getDetail=()=>{
         let ingredients= detail.sections[0].components;
          display=
          <>
-        <button onClick={saveRecipe}>Save Recipe</button> <button onClick={favoriteRecipe}>Add to Favorites</button>
-        <h1>{detail.name}</h1>
-        <img src={detail.thumbnail_url} height="400px" width= "400px"></img>
-        <ul><strong>Credit to:</strong>
+        <Button style={{backgroundColor:"#3282B8", margin: "30px"}} onClick={saveRecipe}>Save Recipe</Button> <Button style={{backgroundColor:"#3282B8", margin: "30px"}} onClick={favoriteRecipe}>Add to Favorites</Button>
+        <div>
+        <h1><span className="recipe-title">{detail.name} </span> </h1>
+        </div>
+        <div >
+        <img src={detail.thumbnail_url} height="400px" width= "400px" className="large-image"></img>
+        </div>
+        <div>
+        <ul  className="credit-ul" ><strong>Credit to:</strong>
         {detail.credits.map((credit, index)=>{
             return(
                 <>
@@ -82,12 +88,26 @@ const getDetail=()=>{
             )
         })}
         </ul>
+        </div>
+        <div className="recipe-title">
         <p>{detail.description}</p>
-        <p><strong>Prep Time:</strong>{detail.prep_time_minutes}</p>
-        <p><strong>Cook Time: {detail.cook_time_minutes}</strong></p>
-        <p><strong>Total Time:</strong>{detail.total_time_minutes}</p>
-        <p><strong>Number of Servings</strong>{detail.num_servings}</p>
-        <ul><h3><strong>Nutrition</strong></h3>
+        </div>
+        <div className="prep-time-servings">
+        <div>
+        <p><strong>Prep Time:  </strong> {detail.prep_time_minutes}</p>
+        </div>
+        <div>
+        <p><strong>Cook Time: </strong> {detail.cook_time_minutes}</p>
+        </div>
+        <div>
+        <p><strong>Total Time:  </strong> {detail.total_time_minutes}</p>
+        </div>
+        <div>
+        <p><strong>Number of Servings:  </strong>{detail.num_servings}</p>
+        </div>
+        </div>
+        <div>
+        <ul className="nutrition-list"><h3><strong>Nutrition</strong></h3>
             <li><strong>Calories</strong>: {detail.nutrition.calories}</li>
             <li><strong>Carbohydrates</strong>: {detail.nutrition.carbohydrates}</li>
             <li><strong>Fat</strong>: {detail.nutrition.fat}</li>
@@ -95,8 +115,9 @@ const getDetail=()=>{
             <li><strong>Protein</strong>: {detail.nutrition.protein}</li>
             <li><strong>Sugar</strong>: {detail.nutrition.sugar}</li>
         </ul>
-
-        <ul><h3><strong>Ingredients</strong></h3>
+        </div>
+        <div>
+        <ul className="ingredients-list"><h3><strong>Ingredients</strong></h3>
             {ingredients.map((ingredient, index)=>{
                 return(
                     <>
@@ -105,7 +126,11 @@ const getDetail=()=>{
                 )
             })}
         </ul>
-        <h3>Instructions</h3>
+        </div>
+        <div>
+        <h3><span className="recipe-title">Instructions</span></h3>
+        </div>
+        <div className="instruction-table">
         {detail.instructions.map((instruction, index)=>{
             return(
                 <>
@@ -113,6 +138,7 @@ const getDetail=()=>{
                 </>
             )
         })}
+        </div>
         {/* <iframe src={detail.renditions[0].url} height="720" width="720"></iframe> */}
         {getVideo()}
         </>
@@ -121,10 +147,10 @@ const getDetail=()=>{
 }
 
     return(
-        <>
+        <div className="recipe-details-page">
         {getDetail()}
         {/* {getVideo()} */}
-        </>
+        </div>
     )//end return
 }//end RecipeDetails
 

@@ -45,7 +45,7 @@ function EachRecipe(props){
           {/* </CardActionArea> */}
           <CardActions>
             <Link to={recipedetails} params={props.recipe.id}>
-              <Button>See Recipe Details</Button>
+              <Button style={{backgroundColor:"#3282B8", color: "white"}}>See Recipe Details</Button>
             </Link>
           </CardActions>   
         </Card>

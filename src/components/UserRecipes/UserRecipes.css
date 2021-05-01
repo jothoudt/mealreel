@@ -1,6 +1,7 @@
 .Grid{
     margin: 25px;
     background-color: #3282B8;
+    display:inline-flex;
 }
 
 Button:hover{

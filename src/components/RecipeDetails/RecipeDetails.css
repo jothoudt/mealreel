@@ -1,0 +1,48 @@
+.recipe-details-page{
+    text-align: center;
+    align-content: center;
+    border: 25px solid #3282B8;
+}
+.video-frame{
+    border: 10px solid #3282B8;
+    margin: 10px;
+}
+.recipe-description{
+    border: 10px solid #3282B8;
+    padding: 5px;
+    margin: 10px;
+    align-content: center;
+}
+.nutrition-list{
+    width:200px;
+    border: 10px solid #3282B8;
+    padding: 5px;
+    margin: 10px;
+    align-content: center;
+    list-style: none;
+}
+.ingredients-list{
+    border: 10px solid #3282B8;
+    padding: 5px;
+    margin: 10px;
+    list-style: none;
+}
+.instruction-table{
+    border: 10px solid #3282B8;
+    padding: 5px;
+    margin: 10px;
+}
+.credit-ul{
+    align-content: center;
+    border: 10px solid #3282B8;
+    margin: 10px;
+    list-style: none;
+    width: 300px;
+}
+.prep-time-servings{
+    align-content: center;
+    border: 10px solid #3282B8;
+    margin: 10px;
+    list-style: none;
+    width: 300px;
+}

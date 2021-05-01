@@ -43,8 +43,8 @@ function SearchRecipes(){
     return(
         <ThemeProvider theme={theme}>
           <div className="search-area">
-            <input type="text" placeholder="Search For Recipes" onChange={handleSearch}></input>
-            <Button style={{backgroundColor:'#3282B8'}} onClick={fetchRecipes}>Search</Button>
+            <input type="text" placeholder="Search For Recipes" onChange={handleSearch} className="search-input"></input>
+            <Button style={{backgroundColor:"#3282B8", color: "white"}} onClick={fetchRecipes}>Search</Button>
           </div>
           <div className='grid-recipes'>
           <Grid container spacing={1}>

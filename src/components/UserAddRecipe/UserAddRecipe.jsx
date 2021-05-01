@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import './UserAddRecipe.css';
 
 function UserAddRecipe(){
 
@@ -43,34 +45,34 @@ function UserAddRecipe(){
         <div className='add-form'>
           <form>
             <div>
-              <h1>Add Recipe</h1>
+              <h1><span className="recipe-title">Add Recipe</span></h1>
             </div>
             <div>
-              <p>Please fill in details below</p>
+              <p><span className="recipe-title">Please fill in details below</span></p>
             </div>
             <div>
-              <label>Recipe Name: </label><input type="text" placeholder="Recipe Name" onChange={(event)=>setRecipeName(event.target.value)} required></input>
+              <label><span className="recipe-title">Recipe Name: </span></label><input type="text" placeholder="Recipe Name" onChange={(event)=>setRecipeName(event.target.value)} required></input>
             </div>
             <div>
-              <label>Recipe Image: </label><input type="text" placeholder="Image URL" onChange={(event)=>setImageUrl(event.target.value)} required ></input>
+              <label><span className="recipe-title">Recipe Image: </span></label><input type="text" placeholder="Image URL" onChange={(event)=>setImageUrl(event.target.value)} required ></input>
             </div>
             <div>
-              <label>Recipe Author: </label><input type="text" placeholder="Recipe Author" onChange={(event)=>setRecipeCredit(event.target.value)} required ></input>
+              <label><span className="recipe-title">Recipe Author: </span></label><input type="text" placeholder="Recipe Author" onChange={(event)=>setRecipeCredit(event.target.value)} required ></input>
             </div>
             <div>
-              <label>Cook Time: </label><input type="number" onChange={(event)=>setCookTime(event.target.value)} required></input>
+              <label><span className="recipe-title">Cook Time(Number of Minutes): </span></label><input type="number" onChange={(event)=>setCookTime(event.target.value)} required></input>
             </div>
             <div>
-              <label>Number of Servings: </label><input type="number" onChange={(event)=>setServings(event.target.value)} required></input>
+              <label><span className="recipe-title">Number of Servings: </span></label><input type="number" onChange={(event)=>setServings(event.target.value)} required></input>
             </div>
             <div>
-              <label>Ingredients</label><textarea type="paragraph_text" cols="50" rows="10" placeholder="Ingredients" onChange={(event)=>setIngredients(event.target.value)} required />
+              <label><span className="recipe-title">Ingredients</span></label><textarea type="paragraph_text" cols="50" rows="10" placeholder="Ingredients" onChange={(event)=>setIngredients(event.target.value)} required />
             </div>
             <div>
-              <label>Instructions</label><textarea type="paragraph_text" cols="50" rows="10" plaeholder="Instructions" onChange={(event)=>setInstructions(event.target.value)} required />
+              <label><span className="recipe-title">Instructions</span></label><textarea type="paragraph_text" cols="50" rows="10" plaeholder="Instructions" onChange={(event)=>setInstructions(event.target.value)} required />
             </div>
             <div>
-              <button onClick={submitRecipe}>Submit Recipe</button>
+              <Button style={{backgroundColor:"#3282B8", color: "white"}} onClick={submitRecipe}>Submit Recipe</Button>
             </div>
           </form>
         </div>

@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { ThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 import './UserRecipes.css'
+import { checkPropTypes } from 'prop-types';
 
 const theme = createMuiTheme({
   button: {
@@ -61,6 +62,7 @@ function UserRecipes(){
                     //     <img src={recipe.img_url}></img>
                     //   </Link>
                     // </div>
+                    <div key={recipe.id}>
                     <Grid item xs={12} spacing={6} key={index}>
                       <Card style={{height:'480px', width: '300px', margin: '25px', backgroundColor:'#F7FBFC'}}>
                         <CardContent style={{padding:'10px'}}>
@@ -73,11 +75,12 @@ function UserRecipes(){
                         </CardContent>
                         <CardActions>
                           <Link to={userRecipeLink}>
-                            <Button style={{backgroundColor:"#3282B8"}}>See Recipe Details</Button>
+                            <Button style={{backgroundColor:"#3282B8", color: "white"}}>See Recipe Details</Button>
                           </Link>
                         </CardActions>   
                       </Card>
                     </Grid>
+                    </div>
                 )
             })}
             </>
@@ -91,7 +94,7 @@ function UserRecipes(){
           <h1>User Recipes</h1>
           <div className="add-a-recipe">
             <Link to="/useraddrecipe">
-              <Button style={{backgroundColor:"#3282B8"}} >Add A Recipe</Button>
+              <Button style={{backgroundColor:"#3282B8", color: "white", fontSize: "22px"}} >Add A Recipe</Button>
             </Link>
           <div className='grid-recipes'>
           <Grid container spacing={1}>
