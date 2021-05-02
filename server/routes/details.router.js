@@ -14,7 +14,7 @@ const option = {
   url: RapidAPI,
   params: {id: recipeId.id},
   headers: {
-    'x-rapidapi-key':'c508c19c3bmsh5d065d441287af7p1aa3fajsn132790e1a658',
+    'x-rapidapi-key':RapidAPI,
     'x-rapidapi-host': 'tasty.p.rapidapi.com'
   }
 };
