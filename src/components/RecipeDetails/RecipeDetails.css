@@ -2,6 +2,7 @@
     text-align: center;
     align-content: center;
     border: 25px solid #3282B8;
+    margin:auto;
 }
 .video-frame{
     border: 10px solid #3282B8;
@@ -12,6 +13,7 @@
     padding: 5px;
     margin: 10px;
     align-content: center;
+    width: 75%;
 }
 .nutrition-list{
     width:200px;
@@ -26,23 +28,28 @@
     padding: 5px;
     margin: 10px;
     list-style: none;
+    width: 75%;
 }
 .instruction-table{
     border: 10px solid #3282B8;
     padding: 5px;
     margin: 10px;
+    width: 75%;
 }
 .credit-ul{
-    align-content: center;
+    text-align: center;
     border: 10px solid #3282B8;
     margin: 10px;
     list-style: none;
     width: 300px;
 }
 .prep-time-servings{
-    align-content: center;
+    text-align:center;
     border: 10px solid #3282B8;
     margin: 10px;
     list-style: none;
     width: 300px;
+}
+.nutrition-list-inside{
+    text-align: center;
 }

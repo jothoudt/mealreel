@@ -7,16 +7,17 @@ require('dotenv').config();
 //get recipe details from 3rd party api
 detailsRouter.get('/:id', (req, res)=>{
   let recipeId=req.params
-  console.log(recipeId);
-
-const option = {
-  method: 'GET',
-  url: RapidAPI,
-  params: {id: recipeId.id},
-  headers: {
-    'x-rapidapi-key':'c508c19c3bmsh5d065d441287af7p1aa3fajsn132790e1a658',
+  console.log(process.env.Application_Key);
+  let headers= {
+    'x-rapidapi-key': `${process.env.Application_Key}`,
     'x-rapidapi-host': 'tasty.p.rapidapi.com'
   }
+  console.log('------------------------------------------------sending', headers)
+const option = {
+  method: 'GET',
+  url: 'https://tasty.p.rapidapi.com/recipes/detail',
+  params: {id: recipeId.id},
+  headers: headers
 };
 
 axios.request(option).then(function (response) {

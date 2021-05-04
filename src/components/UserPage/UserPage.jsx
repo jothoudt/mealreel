@@ -248,7 +248,7 @@ function UserPage() {
       </div>
       </div>
       <div className="to-try">
-      <h2>Recipes you have saved that you would like to try:</h2>
+      <h2>Recipes you have saved:</h2>
       <div className="recipe-carousel">
         {getSavedRecipes()}
         </div>

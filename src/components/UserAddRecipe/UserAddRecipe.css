@@ -5,17 +5,18 @@
 }
 form input{
     border-radius: 8px;
-    border: 3px solid #3282B8;
+    border: 3px solid #0F4C75;
 }
 form textarea{
     border-radius: 8px;
     margin: 10px;
-    border: 3px solid #3282B8;
+    border: 3px solid #0F4C75;
 }
 form{
     text-align: center;
-    border: 7px solid #3282B8;
+    border: 7px solid #0F4C75;
     width: 500px;
+    background-color:#3282B8;
 }
 form div{
     margin: 10px;

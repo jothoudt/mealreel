@@ -73,50 +73,61 @@ const getDetail=()=>{
          <>
         <Button style={{backgroundColor:"#3282B8", margin: "30px"}} onClick={saveRecipe}>Save Recipe</Button> <Button style={{backgroundColor:"#3282B8", margin: "30px"}} onClick={favoriteRecipe}>Add to Favorites</Button>
         <div>
-        <h1><span className="recipe-title">{detail.name} </span> </h1>
+          <h1><span className="recipe-title">{detail.name} </span> </h1>
         </div>
         <div >
-        <img src={detail.thumbnail_url} height="400px" width= "400px" className="large-image"></img>
+          <img src={detail.thumbnail_url} height="400px" width= "400px" className="large-image"></img>
         </div>
         <div>
-        <ul  className="credit-ul" ><strong>Credit to:</strong>
-        {detail.credits.map((credit, index)=>{
-            return(
+            <center>
+          <ul  className="credit-ul" ><strong>Credit to:</strong>
+           {detail.credits.map((credit, index)=>{
+             return(
                 <>
                 <li key={index}>{credit.name}</li>
                 </>
             )
-        })}
-        </ul>
+          })}
+          </ul>
+          </center>
         </div>
-        <div className="recipe-title">
-        <p>{detail.description}</p>
+        <center>
+        <div className="recipe-description">
+          <h3>Description</h3>
+          <p>{detail.description}</p>
         </div>
+        </center>
+        <center>
         <div className="prep-time-servings">
         <div>
-        <p><strong>Prep Time:  </strong> {detail.prep_time_minutes}</p>
+        <center><p><strong>Prep Time:  </strong> {detail.prep_time_minutes}</p></center>
         </div>
         <div>
-        <p><strong>Cook Time: </strong> {detail.cook_time_minutes}</p>
+        <center><p><strong>Cook Time: </strong> {detail.cook_time_minutes}</p></center>
         </div>
         <div>
-        <p><strong>Total Time:  </strong> {detail.total_time_minutes}</p>
+        <center><p><strong>Total Time:  </strong> {detail.total_time_minutes}</p></center>
         </div>
         <div>
-        <p><strong>Number of Servings:  </strong>{detail.num_servings}</p>
+        <center><p><strong>Number of Servings:  </strong>{detail.num_servings}</p></center>
         </div>
         </div>
-        <div>
-        <ul className="nutrition-list"><h3><strong>Nutrition</strong></h3>
+        </center>
+        <div className="nutrition-list-inside">
+        <center>
+          <ul className="nutrition-list"><h3><strong>Nutrition</strong></h3>
             <li><strong>Calories</strong>: {detail.nutrition.calories}</li>
             <li><strong>Carbohydrates</strong>: {detail.nutrition.carbohydrates}</li>
             <li><strong>Fat</strong>: {detail.nutrition.fat}</li>
             <li><strong>Fiber</strong>: {detail.nutrition.fiber}</li>
             <li><strong>Protein</strong>: {detail.nutrition.protein}</li>
             <li><strong>Sugar</strong>: {detail.nutrition.sugar}</li>
-        </ul>
+          </ul>
+        </center>
         </div>
+        
         <div>
+        <center>
         <ul className="ingredients-list"><h3><strong>Ingredients</strong></h3>
             {ingredients.map((ingredient, index)=>{
                 return(
@@ -126,19 +137,24 @@ const getDetail=()=>{
                 )
             })}
         </ul>
+        </center>
+        </div>
+        <center>
+        <div className="instruction-table">
+        <div>
+          <h3>Instructions</h3>
         </div>
         <div>
-        <h3><span className="recipe-title">Instructions</span></h3>
-        </div>
-        <div className="instruction-table">
-        {detail.instructions.map((instruction, index)=>{
+          {detail.instructions.map((instruction, index)=>{
             return(
                 <>
                   <p key={index}>{instruction.display_text}</p>
                 </>
             )
-        })}
+          })}
         </div>
+        </div>
+        </center>
         {/* <iframe src={detail.renditions[0].url} height="720" width="720"></iframe> */}
         {getVideo()}
         </>

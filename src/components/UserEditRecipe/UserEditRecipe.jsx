@@ -41,7 +41,7 @@ function UserEditRecipe(){
     //dispatch to update recipe
     dispatch({type: 'EDIT_USER_RECIPE', payload:editRecipe});
     //directs the user back to user recipes
-    history.push('/userrecipes')
+    history.push('/user')
   }
   //end editRecipe
 
@@ -54,7 +54,7 @@ function UserEditRecipe(){
         <div className="add-form">
          <form>
             <div>
-              <h1><span className="recipe-title">Add Recipe</span></h1>
+              <h1><span className="recipe-title">Edit Recipe</span></h1>
             </div>
             <div>
               <p><span className="recipe-title">Please fill in details below</span></p>
@@ -81,7 +81,7 @@ function UserEditRecipe(){
               <label><span className="recipe-title">Instructions</span></label><textarea type="paragraph_text" cols="50" rows="10" defaultValue={recipe[0].instructions} onChange={(event)=>setInstructions(event.target.value)} required />
             </div>
             <div>
-              <Button style={{backgroundColor:"#3282B8", color: "white"}} type="button" onClick={editRecipe}>Submit Edited Recipe</Button>
+              <Button style={{backgroundColor:"#0F4C75", color: "white"}} type="button" onClick={editRecipe}>Submit Edited Recipe</Button>
             </div>
           </form>
         </div>

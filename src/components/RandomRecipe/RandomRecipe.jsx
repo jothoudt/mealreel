@@ -89,7 +89,7 @@ const getRandom=()=>{
 //end getRandom
 
     return(
-        
+        <center>
         <div className="recipe-random">
           <div>
             <h1>Random Recipe</h1>
@@ -99,6 +99,7 @@ const getRandom=()=>{
               <Button style={{backgroundColor:"#3282B8", color: "white"}} onClick={getRandomRecipe}>Try Again</Button>
           </div>
         </div>
+        </center>
     )
 }
 //end getRandom

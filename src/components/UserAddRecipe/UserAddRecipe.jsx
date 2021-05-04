@@ -72,7 +72,7 @@ function UserAddRecipe(){
               <label><span className="recipe-title">Instructions</span></label><textarea type="paragraph_text" cols="50" rows="10" plaeholder="Instructions" onChange={(event)=>setInstructions(event.target.value)} required />
             </div>
             <div>
-              <Button style={{backgroundColor:"#3282B8", color: "white"}} onClick={submitRecipe}>Submit Recipe</Button>
+              <Button style={{backgroundColor:"#0F4C75", color: "white"}} onClick={submitRecipe}>Submit Recipe</Button>
             </div>
           </form>
         </div>
