@@ -18,6 +18,7 @@ const option = {
   url: 'https://tasty.p.rapidapi.com/recipes/detail',
   params: {id: recipeId.id},
   headers: headers
+
 };
 
 axios.request(option).then(function (response) {
